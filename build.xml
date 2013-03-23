@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="sort" default="build" basedir=".">
+	<property name="Name" value="Sort"/>
+	<property name="name" value="sort"/>
+	<property name="version" value="0.1"/>
+	<property name="final.name" value="${name}-${version}"/>
+	<property name="year" value="2013"/>
+
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="bin.dir" value="${basedir}/bin"/>  	
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="conf.dir" value="${basedir}/conf"/>
+	<property name="contrib.dir" value="${basedir}/src/contrib"/>
+	<property name="docs.src" value="${basedir}/src/docs"/>
+	
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	<property name="jar.file" value="${build.dir}/${final.name}.jar"/>
+	
+		
+	<target name="init">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${bin.dir}"/>
+		<mkdir dir="${lib.dir}"/>
+		<mkdir dir="${build.classes}"/>
+	</target>
+	
+	<target name="build" depends="clean, init, jar">
+		<javac srcdir="${src.dir}" destdir="${build.classes}" debug="true">
+			<classpath> 
+				<fileset dir="${lib.dir}"> 
+					<include name="*.jar"/> 
+				</fileset>
+			</classpath> 
+		</javac>
+		<jar destfile="${jar.file}" basedir="${build.classes}"/>
+		<!--javac 
+		encoding="${build.encoding}" 
+		srcdir="${core.src.dir}"
+		includes="org/apache/hadoop/record/compiler/**/*.java"
+		destdir="${build.classes}"
+		debug="${javac.debug}"
+		optimize="${javac.optimize}"
+		target="${javac.version}"
+		source="${javac.version}"
+		deprecation="${javac.deprecation}">
+		<compilerarg line="${javac.args}"/>
+		<classpath refid="classpath"/>
+		</javac-->
+	</target>
+	<target name="run" depends="build">
+		<java classname="com.zsm.sort.Hello" classpath="${jar.file}"/>
+		<java classname="com.zsm.sort.ShellSort" classpath="${jar.file}"/>
+	</target>
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete verbose="true" includeemptydirs="true">
+		  <fileset dir="${basedir}" includes="**/*.class" />
+		</delete>
+		<delete dir="${bin.dir}" />
+	</target>
+	
+	<!-- ================================================================== -->
+	<!-- Make sort.jar                                                     -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<target name="jar" depends="init" description="Make sort.jar">
+		<!--jar destfile="${build.dir}/${final.name}.jar" basedir="${build.dir}/classes"/-->
+		<!--tar compression="gzip" destfile="${build.classes}/bin.tgz">
+		  <tarfileset dir="${bin.dir}" mode="755"/>
+		</tar-->
+		<!--jar jarfile="${build.dir}/sort-${final.name}.jar"
+			 basedir="${build.classes}">
+		  <manifest>
+			<section name="a/b/c">
+			  <attribute name="Implementation-Title" value="Sort"/>
+			  <attribute name="Implementation-Version" value="${version}"/>
+			  <attribute name="Implementation-Vendor" value="OpenSource"/>
+			</section>
+		  </manifest>
+		</jar-->
+	</target>
+</project>
