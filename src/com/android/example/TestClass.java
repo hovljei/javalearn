@@ -1,4 +1,4 @@
-package android.java;
+package com.android.example;
 
 public class TestClass {
 	int x;
