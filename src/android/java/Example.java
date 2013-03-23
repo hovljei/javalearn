@@ -13,7 +13,7 @@ public class Example {
 
 	public void change(Example ex) {
 		ex.str = "test ok";
-		//this.str = "test ok";
+		// this.str = "test ok";
 		ex.ch[0] = 'g';
 	}
 }

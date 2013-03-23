@@ -6,7 +6,7 @@ public class Hello
 		System.out.println("I");
 		System.out.println("Relly");
 		System.out.println("Love");
-		System.out.println("Lijian!!!");
+		System.out.println("Lj!!!");
 	}
 	
     public static void selectionSort(Comparable []data){

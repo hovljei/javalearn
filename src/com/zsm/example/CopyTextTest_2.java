@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 public class CopyTextTest_2 {
 	private static final int BUFFER_SIZE = 1024;
 
