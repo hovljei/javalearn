@@ -7,7 +7,7 @@ public class HeapSort {
 
 	public static void main(String[] args) {
 		int[] arr = { 1, 4, 56, 78, 2, 3, 67, 12, 15, 53, 42, 73, 41 };
-		// siftDown(arr);
+		siftDown(arr);
 		System.out.println(log2fp(16));
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
@@ -20,10 +20,14 @@ public class HeapSort {
 
 	public static void siftDown(int[] arr) {
 		for (int i = 0; i <= Math.pow(2, log2fp(arr.length)); i++) {
-			if(i*2+1>arr.length){System.out.print(i*2+" exit");}
-			if(i*2+2>arr.length){System.out.print(i*2+" exit");}
+			if (i * 2 + 1 > arr.length) {
+				System.out.print(i * 2 + " exit");
+			}
+			if (i * 2 + 2 > arr.length) {
+				System.out.print(i * 2 + " exit");
+			}
 			for (int j = 0; j < log2fp(arr.length) + 1; j++) {
-				
+
 				if (arr[i] < arr[2 * i + 1]) {
 					swap(arr, i, 2 * i + 1);
 				}
